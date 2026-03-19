@@ -1,16 +1,31 @@
 import {useState ,useRef, useEffect} from 'react'
+import axios from 'axios'
 
 function App() {
   const [input, setInput] = useState<string>("");
-
-  const [timeLeft, setTimeLeft]= useState<number>(60);
+  const [timeLeft, setTimeLeft]= useState<number>(30);
   const [isRunning, setIsRunning] = useState<boolean>(false);
   const [finished, setFinished] = useState<boolean>(false);
+  const [loading, setLoading] =useState<boolean>(false);
 
-  const [paragraph] = useState<string>("hello everyone");
+  const [paragraph, setParagraph] = useState<string>("Hello welcome to cheetah type");
+
+   function getNewQuote(){
+    if(loading) return ;
+    setLoading(true);
+  axios.get("https://api.quotable.io/random")
+    .then((res) => {
+      setParagraph(prev => prev + " " + res.data.content)
+      console.log(res.data);
+      setLoading(false);
+    }).catch(()=> console.log("api eror"))
+
+}
+useEffect(() => {
+  getNewQuote();
+}, [])
 
   useEffect(() => {
-
   if(!isRunning) return
 
   const interval = setInterval(() => {
@@ -31,25 +46,18 @@ useEffect(() => {
 }, [timeLeft])
 
 function calculateWPM(){
-
-  const timeSpent = (60 - timeLeft) / 60
-
+  const timeSpent = (30 - timeLeft) / 60
   if(timeSpent <= 0) return 0
-
   const words = input.length / 5
-
   return Math.round(words / timeSpent)
 }
 function calculateMistakes(){
-
   let mistakes = 0
-
   for(let i = 0; i < input.length; i++){
     if(input[i] !== paragraph[i]){
       mistakes++
     }
   }
-
   return mistakes
 }
   
@@ -88,22 +96,21 @@ function calculateMistakes(){
         onClick={()=> inputRef.current?.focus()}
         autoFocus
         value={input}
-        onChange={(e)=> {
-          if(!isRunning){
-            setIsRunning(true);
-          }
-          setInput(e.target.value)}} 
-        className='opacity-0 absolute'
-        />
-        {finished && (
-  <div>
-    <h2>Results</h2>
-    <p>WPM: {calculateWPM()}</p>
-    <p>Mistakes: {calculateMistakes()}</p>
-  </div>
+      onChange={(e)=>{
+
+  if(!isRunning){
+    setIsRunning(true)
+  }
+  const value = e.target.value
+  setInput(value)
+
+  if(value.length >= paragraph.length - 20){
+    getNewQuote()
+  }
+
+}}/>
+      </>
 )}
-        </>
-)
-}
+
 
 export default App;

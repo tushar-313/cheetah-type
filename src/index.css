@@ -2,7 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
+/* body{
   background-color: #060e1b;
   color: white;
+} */
+img{
+  height: 18rem;
+  width: 50rem;
+}
+.container{
+  display: flex;
+  justify-content: center;
 }
