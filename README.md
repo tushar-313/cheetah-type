@@ -1,73 +1,99 @@
-# React + TypeScript + Vite
+# 🚀 Cheetah Type – Typing Speed Test App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern typing speed test application built using **React, TypeScript, TailwindCSS, and Axios**.
 
-Currently, two official plugins are available:
+This project provides a smooth and interactive typing experience with real-time feedback and dynamic text generation.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## ✨ Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* ⌨️ Real-time typing interface (no visible input box)
+* 🎯 Character-by-character accuracy highlighting
+* ⚡ Live WPM (Words Per Minute) calculation
+* ❌ Mistake tracking
+* ⏱️ Timer-based typing test
+* 🔁 Continuous text generation (infinite typing flow)
+* 🌐 Dynamic paragraphs using API
+* 🟡 Blinking cursor for better UX
+* 🎨 Clean and modern UI
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🧠 How It Works
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+1. The app fetches a random quote from an API
+2. User starts typing → timer begins
+3. Each character is compared in real time
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+   * Correct → Green
+   * Incorrect → Red
+4. As the user approaches the end, new text is appended
+5. Typing continues until the timer ends
+6. Final stats are displayed
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
+
+## 🛠️ Tech Stack
+
+* React (Vite)
+* TypeScript
+* TailwindCSS
+* Axios
+* Quotable API
+
+---
+
+## 📦 Installation
+
+```bash id="install-1"
+git clone https://github.com/your-username/cheetah-type.git
+cd cheetah-type
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 📁 Project Structure
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```text id="structure-1"
+src/
+ ├── App.tsx       # Core typing logic
+ ├── main.tsx      # Entry point
+ ├── index.css     # Tailwind styles
 ```
+
+---
+
+## 📊 Core Logic
+
+### WPM (Words Per Minute)
+
+```text id="wpm-1"
+WPM = (Characters Typed / 5) / Time (in minutes)
+```
+
+---
+
+### Mistakes
+
+```text id="mistake-1"
+Mistakes = Number of incorrect characters typed
+```
+
+---
+
+## 🚀 Future Improvements
+
+* 🔤 Word-based typing system
+* 📈 Accuracy percentage
+* 🔁 Restart test functionality
+* ⏲️ Multiple timer options
+* 🎯 Improved UI and animations
+
+---
+
+## 👨‍💻 Author
+
+Built by Tushar
