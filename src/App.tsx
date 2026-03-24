@@ -229,9 +229,18 @@ const finalAccuracy = calculateAccuracy()
     return (
       
       <>
-      <div className="min-h-screen bg-[#060d1b] text-slate-100 lowercase flex flex-col items-center pt-0 pb-8 px-4">
+      <div className="min-h-screen bg-[#060d1b] text-slate-100 lowercase flex flex-col items-center pt-4 pb-8 px-4">
+
         <div className="w-full max-w-5xl flex flex-col gap-4">
-          <div className="w-full flex items-start justify-between gap-4 pt-2">
+          <div className="relative w-full flex items-end justify-between gap-4 pt-2">
+            {isRunning && (
+              <div className="pointer-events-none absolute left-1/2 -translate-x-1/2 bottom-0 z-20">
+                <div className={`text-lg sm:text-xl font-extrabold tracking-[0.08em] px-6 py-2 rounded-full border border-slate-700 bg-slate-900/90 shadow-lg transition-all duration-300 ${isTimerHighlighted ? 'ring-4 ring-amber-300 scale-105 text-amber-300' : 'text-amber-200'}`}>
+                  {timeLeft}s
+                </div>
+              </div>
+            )}
+
             <img
               src="/cover.png"
               alt="Cheetah Type"
@@ -252,12 +261,6 @@ const finalAccuracy = calculateAccuracy()
                   ))}
                 </div>
               )}
-
-              {isRunning && (
-                <div className={`text-lg sm:text-xl font-extrabold tracking-[0.08em] px-6 py-2 rounded-full border border-slate-700 bg-slate-900/80 shadow-lg transition-all duration-300 ${isTimerHighlighted ? 'ring-4 ring-amber-300 scale-105 text-amber-300' : 'text-amber-200'}`}>
-                  {timeLeft}s
-                </div>
-              )}
             </div>
           </div>
         </div>
@@ -265,11 +268,11 @@ const finalAccuracy = calculateAccuracy()
  <div
   ref={textContainerRef}
   onClick={() => inputRef.current?.focus()}
-  className="w-full max-w-5xl mt-4 rounded-2xl border border-slate-800/80 bg-slate-900/55 backdrop-blur-sm shadow-[0_14px_40px_rgba(2,6,23,0.45)] p-6 sm:p-8 text-[1.55rem] sm:text-[1.7rem] font-bold leading-relaxed tracking-wide text-center transition-all duration-300 max-h-[52vh] overflow-y-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+  className="w-full max-w-5xl mt-4 rounded-2xl border border-slate-800/80 bg-slate-900/55 backdrop-blur-sm shadow-[0_14px_40px_rgba(2,6,23,0.45)] p-6 sm:p-8 text-[1.55rem] sm:text-[1.7rem] font-medium leading-relaxed tracking-wide text-center transition-all duration-300 max-h-[52vh] overflow-y-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
   
 
         {paragraph.split("").map((char, index) => {
-          let color = "text-slate-500";
+          let color = "text-slate-400";
           if (index < input.length)
             if (input[index] === char) {
               color = "text-emerald-300";
