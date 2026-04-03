@@ -3,7 +3,6 @@
 A modern typing speed test application built using **React, TypeScript, TailwindCSS, and Axios**.
 
 This project provides a smooth and interactive typing experience with real-time feedback and dynamic text generation.
-
 ---
 
 ## ✨ Features
@@ -14,7 +13,7 @@ This project provides a smooth and interactive typing experience with real-time 
 * ❌ Mistake tracking
 * ⏱️ Timer-based typing test
 * 🔁 Continuous text generation (infinite typing flow)
-* 🌐 Dynamic paragraphs using API
+* 🌐 Dynamic paragraphs (Motivation and life related quotes) using API
 * 🟡 Blinking cursor for better UX
 * 🎨 Clean and modern UI
 
@@ -22,7 +21,7 @@ This project provides a smooth and interactive typing experience with real-time 
 
 ## 🧠 How It Works
 
-1. The app fetches a random quote from an API
+1. The app fetches a random motivational life quote from an API
 2. User starts typing → timer begins
 3. Each character is compared in real time
 
